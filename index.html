@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product Comparison Interface</title>
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="./index.js"></script>
+
+  <!-- SCSS compiled to CSS -->
+    <link rel="stylesheet" href="index.css" />
+  <style>
+  
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Product Comparison</h1>
+    <div class="controls">
+        <input type="search" id="searchInput" placeholder="Search products..." aria-label="Search products" />
+        <div class="category-filters" role="group" aria-label="Filter by category">
+        <label>
+            <input type="checkbox" value="phones" class="category-checkbox" />
+            Phones
+        </label>
+        <label>
+            <input type="checkbox" value="laptops" class="category-checkbox" />
+            Laptops
+        </label>
+        <label>
+            <input type="checkbox" value="tablets" class="category-checkbox" />
+            Tablets
+        </label>
+        </div>
+        <button id="themeToggle" class="toggle-btn" aria-pressed="false">🌙 Dark Mode</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section>
+      <div id="productGrid" class="product-grid" aria-live="polite"></div>
+    </section>
+
+    <section id="comparisonView" class="comparison-view" aria-live="polite">
+      <div class="comparison-header">
+        <h2>Comparison</h2>
+        <button id="clearComparison" class="secondary-btn">Clear Comparison</button>
+      </div>
+      <div class="comparison-table-wrapper">
+        <table id="comparisonTable" class="comparison-table"></table>
+      </div>
+    </section>
+  </main>
+
+  <div id="compareBar" class="compare-bar" role="region" aria-label="Compare selected products">
+    <div class="compare-items" id="compareItems"></div>
+    <div class="compare-actions">
+      <button id="compareNow" class="primary-btn">Compare</button>
+      <button id="clearCompareBar" class="secondary-btn">Clear</button>
+    </div>
+  </div>
+
+</body>
+</html>
