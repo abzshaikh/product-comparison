@@ -1,4 +1,5 @@
 # product-comparison
+
 An interactive, responsive web interface for product comparison
 
 # Product Comparison Interface
@@ -10,6 +11,7 @@ An interactive, responsive, and accessible web interface that allows users to co
 ## Live Features
 
 ### Product Listing
+
 - Displays a responsive grid of products.
 - Each product shows:
   - Name
@@ -20,11 +22,13 @@ An interactive, responsive, and accessible web interface that allows users to co
   - Category badge (Phones, Laptops, Tablets)
 
 ### Search & Filtering
+
 - Real-time **search bar** to filter by name or brand.
 - **Multi-select category filters** (checkbox-based).
 - Filter selections persist using `localStorage`.
 
 ### Compare Functionality
+
 - Users can select up to **3 products** to compare.
 - A **compare bar** appears when at least 2 products are selected.
 - Comparison view shows:
@@ -35,6 +39,7 @@ An interactive, responsive, and accessible web interface that allows users to co
 - Differences are visually highlighted.
 
 ### Accessibility
+
 - Full keyboard support:
   - `Tab` navigation
   - Arrow key navigation between product cards
@@ -42,10 +47,12 @@ An interactive, responsive, and accessible web interface that allows users to co
 - Proper ARIA labels and roles.
 
 ### Light / Dark Mode
+
 - Toggle between light and dark themes.
 - Theme preference is persisted using `localStorage`.
 
 ### Persistence
+
 - Selected comparison items persist across reloads.
 - Selected filters persist across reloads.
 - Theme preference persists.
@@ -61,3 +68,7 @@ An interactive, responsive, and accessible web interface that allows users to co
 - No backend, APIs, or frameworks.
 
 ---
+
+## 🔗 Live Demo
+
+[View the live project](https://product-compare-list.netlify.app/)
