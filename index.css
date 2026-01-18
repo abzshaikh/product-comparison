@@ -9,6 +9,7 @@
   --success: #16a34a;
   --danger: #dc2626;
   --th-text: #e5e7eb;
+  --sky-blue: #5bc0eb;
 }
 
 body.dark {
@@ -18,6 +19,7 @@ body.dark {
   --muted: #9ca3af;
   --border: #334155;
   --th-text: #e5e7eb;
+  --sky-blue: #093649;
 }
 
 * {
@@ -40,7 +42,7 @@ header {
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid var(--border);
-  background: var(--card-bg);
+  background: var(--sky-blue);
   position: sticky;
   top: 0;
   z-index: 50;
@@ -60,17 +62,26 @@ header h1 {
   padding: 0.5rem 0.75rem;
   border-radius: 0.5rem;
   border: 1px solid var(--border);
-  background: transparent;
-  color: var(--text);
+  background: var(--card-bg);
+  color: var(--text) !important;
+}
+.controls:placeholder {
+  color: var(--text) !important;
 }
 
 .toggle-btn {
   padding: 0.45rem 0.75rem;
   border-radius: 0.5rem;
   border: 1px solid var(--border);
-  background: transparent;
+  background: var(--card-bg);
   color: var(--text);
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.toggle-btn i {
+  font-size: 0.9rem;
 }
 
 .container {
@@ -163,7 +174,7 @@ header h1 {
 }
 
 .secondary-btn {
-  background: transparent;
+  background: var(--card-bg);
   color: var(--text);
   border: 1px solid var(--border);
   padding: 0.55rem 0.9rem;
@@ -175,7 +186,7 @@ header h1 {
 .compare-bar {
   position: sticky;
   bottom: 0;
-  background: var(--card-bg);
+  background: var(--sky-blue);
   border-top: 1px solid var(--border);
   padding: 0.75rem 1rem;
   display: none;
@@ -243,7 +254,7 @@ header h1 {
   font-size: 0.85rem;
 }
 .comparison-table th {
-  background: var(--primary);
+  background: var(--sky-blue);
   font-weight: 600;
   color: var(--th-text);
 }
@@ -330,7 +341,6 @@ header h1 {
     padding: 0.45rem 0.4rem;
   }
 }
-/* ---------------- GLOBAL MOTION ---------------- */
 * {
   transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
 }
@@ -339,7 +349,6 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* ---------------- PRODUCT GRID ANIMATIONS ---------------- */
 .product-grid {
   animation: fadeInGrid 0.4s ease;
 }
@@ -363,7 +372,6 @@ body {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
 }
 
-/* ---------------- FILTER CHECKBOXES ---------------- */
 .category-filters label {
   transition: color 0.2s ease, transform 0.15s ease;
 }
@@ -371,7 +379,6 @@ body {
   transform: translateY(-1px);
 }
 
-/* ---------------- THEME TOGGLE ---------------- */
 .toggle-btn {
   transition: background-color 0.25s ease, transform 0.15s ease;
 }
@@ -379,7 +386,6 @@ body {
   transform: translateY(-1px);
 }
 
-/* ---------------- REDUCED MOTION SUPPORT ---------------- */
 @media (prefers-reduced-motion: reduce) {
   * {
     animation: none !important;

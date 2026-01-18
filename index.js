@@ -76,7 +76,6 @@ $(document).ready(function () {
             features: { Battery: "25 hrs", Screen: "6.7\" OLED", Camera: "50 MP", Processor:"N/A" },
         },
 
-        // Laptops
         {
             id: 9,
             name: "MacBook Air M3",
@@ -96,7 +95,6 @@ $(document).ready(function () {
             features: { Battery: "14 hrs", Screen: "13.4\" FHD+", Camera: "N/A", Processor: "Intel i7" },
         },
 
-        // Tablets
         {
             id: 11,
             name: "iPad Pro",
@@ -121,8 +119,6 @@ $(document).ready(function () {
     let compareItems = loadCompareItems();
     const FILTER_KEY = "productCategoryFilters";
     let activeCategories = loadCategoryFilters();
-
-    /* ---------------- RENDER FUNCTIONS ---------------- */
 
     function renderProducts(filter = "") {
         const grid = $("#productGrid");
@@ -218,7 +214,7 @@ $(document).ready(function () {
       });
       table.append(headerRow);
 
-      // 🖼️ Image row
+      // Image row
       const imageRow = $("<tr><td>Image</td></tr>");
       selectedProducts.forEach((p) => {
         imageRow.append(`
@@ -254,8 +250,6 @@ $(document).ready(function () {
       });
     }
 
-    /* ---------------- STORAGE ---------------- */
-
     function saveCompareItems() {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(compareItems));
     }
@@ -284,15 +278,11 @@ $(document).ready(function () {
         }
     }
 
-    /* ---------------- INTERACTIONS ---------------- */
-
-    // Add/remove compare
     $(document).on("click", ".compare-btn", function () {
       const id = parseInt($(this).data("id"));
       toggleCompare(id);
     });
 
-    // Keyboard: Enter/Space on button or card
     $(document).on("keydown", ".product-card", function (e) {
       if (e.key === "Enter") {
         $(this).find(".compare-btn").click();
@@ -323,19 +313,16 @@ $(document).ready(function () {
       renderComparisonView();
     }
 
-    // Remove from chip
     $(document).on("click", ".remove-chip", function () {
       const id = parseInt($(this).data("id"));
       toggleCompare(id);
     });
 
-    // Compare now
     $("#compareNow").on("click", function () {
       $("#comparisonView")[0].scrollIntoView({ behavior: "smooth" });
       renderComparisonView();
     });
 
-    // Clear
     $("#clearCompareBar, #clearComparison").on("click", function () {
       compareItems = [];
       saveCompareItems();
@@ -344,18 +331,26 @@ $(document).ready(function () {
       renderComparisonView();
     });
 
-    // Search
     $("#searchInput").on("input", function () {
       const value = $(this).val();
       renderProducts(value);
     });
 
-    // Theme toggle
     $("#themeToggle").on("click", function () {
       const isDark = $("body").toggleClass("dark").hasClass("dark");
-      $(this)
-        .attr("aria-pressed", isDark)
-        .text(isDark ? "☀️ Light Mode" : "🌙 Dark Mode");
+
+      const icon = $(this).find("i");
+      const text = $(this).find(".toggle-text");
+
+      if (isDark) {
+        icon.removeClass("fa-moon").addClass("fa-sun");
+        text.text("Light Mode");
+      } else {
+        icon.removeClass("fa-sun").addClass("fa-moon");
+        text.text("Dark Mode");
+      }
+
+      $(this).attr("aria-pressed", isDark);
       localStorage.setItem("theme", isDark ? "dark" : "light");
     });
 
@@ -363,13 +358,13 @@ $(document).ready(function () {
       const theme = localStorage.getItem("theme");
       if (theme === "dark") {
         $("body").addClass("dark");
-        $("#themeToggle")
-          .attr("aria-pressed", true)
-          .text("☀️ Light Mode");
+        const btn = $("#themeToggle");
+        btn.attr("aria-pressed", true);
+        btn.find("i").removeClass("fa-moon").addClass("fa-sun");
+        btn.find(".toggle-text").text("Light Mode");
       }
     }
 
-    // On checkbox change
     $(document).on("change", ".category-checkbox", function () {
         const value = $(this).val();
 
@@ -392,8 +387,6 @@ $(document).ready(function () {
         });
     }
 
-    /* ---------------- INIT ---------------- */
-
     loadTheme();
     renderProducts();
     renderCompareBar();
@@ -401,14 +394,12 @@ $(document).ready(function () {
     syncCategoryCheckboxes();
   });
 
-  // Arrow key navigation between product cards
     $(document).on("keydown", ".product-card", function (e) {
     const $cards = $(".product-card:visible");
     const currentIndex = $cards.index(this);
 
     if (currentIndex === -1) return;
 
-    // Estimate number of columns based on layout
     const containerWidth = $("#productGrid").width();
     const cardWidth = $(this).outerWidth(true);
     const columns = Math.max(1, Math.floor(containerWidth / cardWidth));

@@ -1,6 +1,4 @@
-// =====================
 // Variables
-// =====================
 $bg-light: #f7f7f9;
 $card-bg-light: #ffffff;
 $text-light: #111;
@@ -16,9 +14,9 @@ $text-dark: #e5e7eb;
 $muted-dark: #9ca3af;
 $border-dark: #334155;
 
-// =====================
-// CSS Variables Setup
-// =====================
+$sky-surge: #5bc0eb;
+$sky-surge-dark: #093649;
+
 :root {
   --bg: #{$bg-light};
   --card-bg: #{$card-bg-light};
@@ -29,6 +27,7 @@ $border-dark: #334155;
   --success: #{$success};
   --danger: #{$danger};
   --th-text: #{$text-dark};
+  --sky-blue: #{$sky-surge};
 }
 
 body.dark {
@@ -38,11 +37,9 @@ body.dark {
   --muted: #{$muted-dark};
   --border: #{$border-dark};
   --th-text: #{$text-dark};
+  --sky-blue: #{$sky-surge-dark};
 }
 
-// =====================
-// Base
-// =====================
 * {
   box-sizing: border-box;
 }
@@ -55,9 +52,6 @@ body {
   transition: background 0.3s, color 0.3s;
 }
 
-// =====================
-// Header
-// =====================
 header {
   padding: 1rem 1.25rem;
   display: flex;
@@ -66,7 +60,7 @@ header {
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid var(--border);
-  background: var(--card-bg);
+  background: var(--sky-blue);
   position: sticky;
   top: 0;
   z-index: 50;
@@ -77,9 +71,6 @@ header {
   }
 }
 
-// =====================
-// Controls
-// =====================
 .controls {
   display: flex;
   gap: 0.75rem;
@@ -90,8 +81,12 @@ header {
     padding: 0.5rem 0.75rem;
     border-radius: 0.5rem;
     border: 1px solid var(--border);
-    background: transparent;
-    color: var(--text);
+    background: var(--card-bg);
+    color: var(--text) !important;
+  }
+
+  &:placeholder {
+    color: var(--text) !important;
   }
 }
 
@@ -99,14 +94,18 @@ header {
   padding: 0.45rem 0.75rem;
   border-radius: 0.5rem;
   border: 1px solid var(--border);
-  background: transparent;
+  background: var(--card-bg);
   color: var(--text);
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+
+  i {
+    font-size: 0.9rem;
+  }
 }
 
-// =====================
-// Layout
-// =====================
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -119,9 +118,6 @@ header {
   gap: 1rem;
 }
 
-// =====================
-// Product Card
-// =====================
 .product-card {
   background: var(--card-bg);
   border-radius: 0.75rem;
@@ -173,9 +169,6 @@ header {
   }
 }
 
-// =====================
-// Buttons
-// =====================
 .compare-btn {
   margin-top: auto;
   padding: 0.5rem 0.75rem;
@@ -208,7 +201,7 @@ header {
 }
 
 .secondary-btn {
-  background: transparent;
+  background: var(--card-bg);
   color: var(--text);
   border: 1px solid var(--border);
   padding: 0.55rem 0.9rem;
@@ -217,13 +210,10 @@ header {
   font-size: 0.85rem;
 }
 
-// =====================
-// Compare Bar
-// =====================
 .compare-bar {
   position: sticky;
   bottom: 0;
-  background: var(--card-bg);
+  background: var(--sky-blue);
   border-top: 1px solid var(--border);
   padding: 0.75rem 1rem;
   display: none;
@@ -267,9 +257,6 @@ header {
   flex-wrap: wrap;
 }
 
-// =====================
-// Comparison View
-// =====================
 .comparison-view {
   display: none;
   margin-top: 1.5rem;
@@ -297,7 +284,7 @@ header {
   }
 
   th {
-    background: var(--primary);
+    background: var(--sky-blue);
     font-weight: 600;
     color: var(--th-text);
   }
@@ -381,10 +368,6 @@ header {
   }
 }
 
-
-// =====================
-// Responsive
-// =====================
 @media (max-width: 600px) {
   header {
     flex-direction: column;
@@ -400,7 +383,6 @@ header {
   }
 }
 
-/* ---------------- GLOBAL MOTION ---------------- */
 * {
   transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
 }
@@ -409,7 +391,6 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* ---------------- PRODUCT GRID ANIMATIONS ---------------- */
 .product-grid {
   animation: fadeInGrid 0.4s ease;
 }
@@ -436,7 +417,6 @@ body {
   }
 }
 
-/* ---------------- FILTER CHECKBOXES ---------------- */
 .category-filters label {
   transition: color 0.2s ease, transform 0.15s ease;
 
@@ -445,7 +425,6 @@ body {
   }
 }
 
-/* ---------------- THEME TOGGLE ---------------- */
 .toggle-btn {
   transition: background-color 0.25s ease, transform 0.15s ease;
 
@@ -454,7 +433,6 @@ body {
   }
 }
 
-/* ---------------- REDUCED MOTION SUPPORT ---------------- */
 @media (prefers-reduced-motion: reduce) {
   * {
     animation: none !important;
