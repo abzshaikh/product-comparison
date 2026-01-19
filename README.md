@@ -69,6 +69,14 @@ An interactive, responsive, and accessible web interface that allows users to co
 
 ---
 
+## Setup instructions
+
+- Clone the Repository
+- Compile scss to css
+- Open index.html in browser
+
+---
+
 ## 🔗 Live Demo
 
 [View the live project](https://product-compare-list.netlify.app/)
